@@ -1,5 +1,27 @@
 import numpy as np
 
+STATIONS_CONF = {
+	'海浜幕張': {'time':14, 'sd':1},
+	'京成幕張': {'time':19, 'sd':1},
+	'幕張': {'time':19, 'sd':1}
+}
+
+# nop = Number Of People
+TRAINS_CONF = {
+	'海浜幕張':[
+		{'arrival_time':1000, 'nop':300},
+		{'arrival_time':1000, 'nop':300},
+	],
+	'京成幕張':[
+		{'arrival_time':1000, 'nop':300},
+		{'arrival_time':1000, 'nop':300},
+	],
+	'幕張':[
+		{'arrival_time':1000, 'nop':300},
+		{'arrival_time':1000, 'nop':300},
+	]
+}
+
 class Train:
 
 	def __init__(self, arrival_time, time_needed, People_list, standard_deviation=1, station_name=None):
