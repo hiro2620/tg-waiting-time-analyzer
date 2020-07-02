@@ -8,9 +8,9 @@ BASE_TIME = datetime(2020, 7, 1, 7, 50) # t = 0
 MAX_TIME_STEP = 60 * 40 # [sec]
 
 STATIONS_CONF = {
-	'海浜幕張': {'time':15 * 60, 'sd':10}, # [sec]
-	'京成幕張': {'time':17 * 60, 'sd':12}, # [sec]
-	'幕張': {'time':18 * 60, 'sd':14} # [sec]
+	'海浜幕張': {'time':15 * 60, 'sd':240}, # [sec]
+	'京成幕張': {'time':17 * 60, 'sd':250}, # [sec]
+	'幕張': {'time':18 * 60, 'sd':260} # [sec]
 }
 
 # nop = Number Of People
