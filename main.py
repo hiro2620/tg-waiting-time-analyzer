@@ -4,13 +4,13 @@ import matplotlib.pyplot as plt
 
 THERMOGRAPHY_CAPACITY = 1
 
-BASE_TIME = datetime(2020, 7, 1, 7, 50) # t = 0
+BASE_TIME = datetime(2020, 7, 1, 8, 0) # t = 0
 MAX_TIME_STEP = 60 * 40 # [sec]
 
 STATIONS_CONF = {
-	'海浜幕張': {'time':15 * 60, 'sd':240}, # [sec]
-	'京成幕張': {'time':17 * 60, 'sd':250}, # [sec]
-	'幕張': {'time':18 * 60, 'sd':260} # [sec]
+	'海浜幕張': {'time':15 * 60, 'sd':200}, # [sec]
+	'京成幕張': {'time':17 * 60, 'sd':220}, # [sec]
+	'幕張': {'time':18 * 60, 'sd':230} # [sec]
 }
 
 # nop = Number Of People
@@ -18,36 +18,36 @@ TRAINS_CONF = [
 	{
 		'station':'海浜幕張',
 		'trains':[
-			{'arrival_time':datetime(2020, 7, 1, 7, 51), 'nop':300}, # 武蔵野線 海浜幕張行 0751着
-			{'arrival_time':datetime(2020, 7, 1, 8, 6), 'nop':300},  # 武蔵野線 海浜幕張行 0806着
-			{'arrival_time':datetime(2020, 7, 1, 7, 53), 'nop':300}, # 京葉線 蘇我行 0753着
+			# {'arrival_time':datetime(2020, 7, 1, 7, 51), 'nop':300}, # 武蔵野線 海浜幕張行 0751着
+			# {'arrival_time':datetime(2020, 7, 1, 8, 6), 'nop':300},  # 武蔵野線 海浜幕張行 0806着
+			# {'arrival_time':datetime(2020, 7, 1, 7, 53), 'nop':300}, # 京葉線 蘇我行 0753着
 			{'arrival_time':datetime(2020, 7, 1, 8, 1), 'nop':300},  # 京葉線 蘇我行 0801着
-			{'arrival_time':datetime(2020, 7, 1, 8, 9), 'nop':300},  # 京葉線 蘇我行 0809着
-			{'arrival_time':datetime(2020, 7, 1, 8, 12), 'nop':300},  # 京葉線 蘇我行 0812着
+			# {'arrival_time':datetime(2020, 7, 1, 8, 9), 'nop':300},  # 京葉線 蘇我行 0809着
+			# {'arrival_time':datetime(2020, 7, 1, 8, 12), 'nop':300},  # 京葉線 蘇我行 0812着
 		]
 	},
-	{
-		'station':'京成幕張',
-		'trains':[
-			{'arrival_time':datetime(2020, 7, 1, 7, 50), 'nop':300}, # 京成千葉線 ちはら台行 0750着
-			{'arrival_time':datetime(2020, 7, 1, 8, 6), 'nop':300}, # 京成千葉線 ちはら台行 0806着
-			{'arrival_time':datetime(2020, 7, 1, 8, 1), 'nop':300}, # 京成千葉線 ちはら台行 0806着
-			{'arrival_time':datetime(2020, 7, 1, 7, 50), 'nop':300}, # 京成千葉線 京成津田沼行 0750着
-			{'arrival_time':datetime(2020, 7, 1, 8, 1), 'nop':300}, # 京成千葉線/千原線 京成津田沼行 0801着
-		]
-	},
-	{
-		'station':'幕張',
-		'trains':[
-			{'arrival_time':datetime(2020, 7, 1, 7, 51), 'nop':300}, # 総武線 千葉行 0751着
-			{'arrival_time':datetime(2020, 7, 1, 8, 0), 'nop':300}, # 総武線 千葉行 0800着
-			{'arrival_time':datetime(2020, 7, 1, 8, 6), 'nop':300}, # 総武線 千葉行 0806着
-			{'arrival_time':datetime(2020, 7, 1, 7, 51), 'nop':300}, # 総武線 中野行 0751着
-			{'arrival_time':datetime(2020, 7, 1, 7, 55), 'nop':300}, # 総武線 中野行 0755着
-			{'arrival_time':datetime(2020, 7, 1, 7, 58), 'nop':300}, # 総武線 中野行 0758着
-			{'arrival_time':datetime(2020, 7, 1, 8, 4), 'nop':300}, # 総武線 中野行 0804着
-		]
-	}
+	# {
+	# 	'station':'京成幕張',
+	# 	'trains':[
+	# 		{'arrival_time':datetime(2020, 7, 1, 7, 50), 'nop':300}, # 京成千葉線 ちはら台行 0750着
+	# 		{'arrival_time':datetime(2020, 7, 1, 8, 6), 'nop':300}, # 京成千葉線 ちはら台行 0806着
+	# 		{'arrival_time':datetime(2020, 7, 1, 8, 1), 'nop':300}, # 京成千葉線 ちはら台行 0806着
+	# 		{'arrival_time':datetime(2020, 7, 1, 7, 50), 'nop':300}, # 京成千葉線 京成津田沼行 0750着
+	# 		{'arrival_time':datetime(2020, 7, 1, 8, 1), 'nop':300}, # 京成千葉線/千原線 京成津田沼行 0801着
+	# 	]
+	# },
+	# {
+	# 	'station':'幕張',
+	# 	'trains':[
+	# 		{'arrival_time':datetime(2020, 7, 1, 7, 51), 'nop':300}, # 総武線 千葉行 0751着
+	# 		{'arrival_time':datetime(2020, 7, 1, 8, 0), 'nop':300}, # 総武線 千葉行 0800着
+	# 		{'arrival_time':datetime(2020, 7, 1, 8, 6), 'nop':300}, # 総武線 千葉行 0806着
+	# 		{'arrival_time':datetime(2020, 7, 1, 7, 51), 'nop':300}, # 総武線 中野行 0751着
+	# 		{'arrival_time':datetime(2020, 7, 1, 7, 55), 'nop':300}, # 総武線 中野行 0755着
+	# 		{'arrival_time':datetime(2020, 7, 1, 7, 58), 'nop':300}, # 総武線 中野行 0758着
+	# 		{'arrival_time':datetime(2020, 7, 1, 8, 4), 'nop':300}, # 総武線 中野行 0804着
+	# 	]
+	# }
 ]
 
 
@@ -84,7 +84,6 @@ class Train:
 		assert isinstance(base_time, datetime), 'base_time must be an instance of datetime.datetime'
 		assert isinstance(arrival_time, datetime), 'arrival_time must be an instance of datetime.datetime'
 		self.arrival_time = (arrival_time - base_time).total_seconds() # [sec] <class 'datetime.timedelta'> -> float
-		print(self.arrival_time)
 
 		self.time_needed = time_needed # [sec]
 		self.people_list = people_list
@@ -145,8 +144,9 @@ class ThermographyLine:
 
 	def proceed_time(self, sec):
 		pass_people_cnt = round(sec * self.cnt_per_sec)
-		passed_people = self.wating_people[:sec * pass_people_cnt - 1]
+		passed_people = self.wating_people[:sec * pass_people_cnt]
 		self.wating_people = self.wating_people[sec * pass_people_cnt:]
+		print(passed_people)
 		return passed_people
 
 	def get_waiting_people_cnt(self):
@@ -184,14 +184,13 @@ flow = PeopleFlow(trains_list)
 thermo = ThermographyLine(THERMOGRAPHY_CAPACITY)
 
 # main loop
-time_step = 0 # [sec]
-
-passed_people = []
+passed_people_list = []
 history_gate = []
 history_waiting = []
 history_passed = []
 
 for t in range(0, MAX_TIME_STEP):
+	print(t)
 	people_at_gate = flow.get_people_instances(t)
 	history_gate.append(len(people_at_gate))
 
@@ -201,20 +200,51 @@ for t in range(0, MAX_TIME_STEP):
 
 	history_waiting.append(thermo.get_waiting_people_cnt())
 
+	# print(type(passed_people))
+	print(passed_people_list)
+
 	for p in passed_people:
+		# print(p)
 		p.set_arrival_time_doorway(t)
-		passed_people.append(p)
+		# print(p)
+		passed_people_list.append(p)
+
 
 # draw graph
-fig = plt.figure()
-
-ax1 = fig.add_subplot(2,2,1)
+fig = plt.figure(1)
+ax1 = fig.add_subplot()
 ax1.plot(history_gate)
+ax1.set_title('Number of People Arriving at the School Gate per Second')
+ax1.set_xlabel('t[sec]')
+ax1.set_ylabel('number')
 
-ax2 = fig.add_subplot(2,2,2)
+
+fig = plt.figure(2)
+ax2 = fig.add_subplot()
 ax2.plot(history_waiting)
+ax2.set_title('Number of People in Line')
+ax2.set_xlabel('t[sec]')
+ax2.set_ylabel('number')
 
-ax3 = fig.add_subplot(2,2,3)
+fig = plt.figure(3)
+ax3 = fig.add_subplot()
 ax3.plot(history_passed)
+ax3.set_title('Number of People Passing Through Thermography per Second')
+ax3.set_xlabel('t[sec]')
+ax3.set_ylabel('number')
+
+x = [x.arrival_time_gate for x in passed_people]
+y = [x.calc_wait_time for x in passed_people]
+
+fig = plt.figure(4)
+ax4 = fig.add_subplot()
+ax4.scatter(x,y)
+
+x = [x.arrival_time_gate for x in passed_people]
+y = [x.arrival_time_doorway for x in passed_people]
+
+fig = plt.figure(5)
+ax5 = fig.add_subplot()
+ax5.scatter(x,y)
 
 plt.show()
