@@ -1,16 +1,17 @@
+import math
 from datetime import datetime, timedelta
 import numpy as np
 import matplotlib.pyplot as plt
 
-THERMOGRAPHY_CAPACITY = 1.5
+THERMOGRAPHY_CAPACITY = 1.2
 
-BASE_TIME = datetime(2020, 7, 1, 7, 50) # t = 0
-MAX_TIME_STEP = 60 * 40 # [sec]
+BASE_TIME = datetime(2020, 7, 1, 8, 0) # t = 0
+MAX_TIME_STEP = 30 * 60 # [sec]
 
 STATIONS_CONF = {
-	'海浜幕張': {'time':14 * 60, 'sd':125}, # [sec]
-	'京成幕張': {'time':15 * 60, 'sd':140}, # [sec]
-	'幕張': {'time':16 * 60, 'sd':140} # [sec]
+	'海浜幕張': {'time':14 * 60, 'sd':115}, # [sec]
+	'京成幕張': {'time':15 * 60, 'sd':125}, # [sec]
+	'幕張': {'time':16 * 60, 'sd':130} # [sec]
 }
 
 # nop = Number Of People
@@ -137,12 +138,16 @@ class ThermographyLine:
 	def __init__(self, cnt_per_sec):
 		self.cnt_per_sec = cnt_per_sec
 		self.wating_people = []
+		self.passed_people_cnt = 0
+		self.passed_people_cnt_int = 0
 
 	def add_waiting_people(self, people_instance):
 		self.wating_people.extend(people_instance)
 
 	def proceed_time(self, sec):
-		pass_people_cnt = round(sec * self.cnt_per_sec)
+		self.passed_people_cnt += sec * self.cnt_per_sec
+		pass_people_cnt = math.floor(self.passed_people_cnt - self.passed_people_cnt_int)
+		self.passed_people_cnt_int += pass_people_cnt
 		passed_people = self.wating_people[:sec * pass_people_cnt]
 		self.wating_people = self.wating_people[sec * pass_people_cnt:]
 		return passed_people
@@ -218,7 +223,9 @@ ax1.plot(history_gate, linewidth=1)
 ax1.set_title('Number of People Arriving at the School Gate per Second')
 ax1.set_xlabel('t[sec]')
 ax1.set_ylabel('number')
-ax1.axvline(33*60, color='red')
+ax1.axvline(20*60, color='green')
+ax1.axvline(23*60, color='red')
+ax1.axvline(25*60, color='red')
 ax1.set_xticks(TICKS_MAJOR, minor=False)
 ax1.set_xticks(TICKS_MINOR, minor=True)
 
@@ -230,7 +237,9 @@ ax2.set_title('Number of People in Line')
 # ax2.scatter(np.arange(0, MAX_TIME_STEP + 1), history_waiting, s=15)
 ax2.set_xlabel('t[sec]')
 ax2.set_ylabel('number')
-ax2.axvline(33*60, color='red')
+ax2.axvline(20*60, color='green')
+ax2.axvline(23*60, color='red')
+ax2.axvline(25*60, color='red')
 ax2.set_xticks(TICKS_MAJOR, minor=False)
 ax2.set_xticks(TICKS_MINOR, minor=True)
 
@@ -241,7 +250,9 @@ ax3.plot(history_passed, linewidth=1)
 ax3.set_title('Number of People Passing Through Thermography per Second')
 ax3.set_xlabel('t[sec]')
 ax3.set_ylabel('number')
-ax2.axvline(33*60, color='red')
+ax2.axvline(20*60, color='green')
+ax2.axvline(23*60, color='red')
+ax2.axvline(25*60, color='red')
 ax3.set_xticks(TICKS_MAJOR, minor=False)
 ax3.set_xticks(TICKS_MINOR, minor=True)
 
@@ -251,7 +262,9 @@ y1 = [x.calc_wait_time() for x in passed_people_list]
 fig = plt.figure(4, figsize=FIG_SIZE)
 ax4 = fig.add_subplot()
 ax4.scatter(x1,y1, s=15, alpha=1)
-ax4.axvline(33*60, color='red')
+ax4.axvline(20*60, color='green')
+ax4.axvline(23*60, color='red')
+ax4.axvline(25*60, color='red')
 ax4.set_title('Time to Wait in Line vs Time to Through School Gate')
 ax4.set_xticks(TICKS_MAJOR, minor=False)
 ax4.set_xticks(TICKS_MINOR, minor=True)
@@ -266,8 +279,9 @@ ax5.set_title('Time to Through Thermography vs Time to Through School Gate')
 x2_sub = np.arange(0, MAX_TIME_STEP + 1)
 y2_sub = x2_sub
 ax5.plot(x2_sub, y2_sub, alpha=0.5)
-ax5.axhline(33*60, color='red')
-ax5.axhline(35*60, color='red')
+ax5.axhline(20*60, color='green')
+ax5.axhline(23*60, color='red')
+ax5.axhline(25*60, color='red')
 ax5.set_xticks(TICKS_MAJOR, minor=False)
 ax5.set_xticks(TICKS_MINOR, minor=True)
 
