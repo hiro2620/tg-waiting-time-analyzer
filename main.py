@@ -18,36 +18,36 @@ TRAINS_CONF = [
 	{
 		'station':'海浜幕張',
 		'trains':[
-			# {'arrival_time':datetime(2020, 7, 1, 7, 51), 'nop':300}, # 武蔵野線 海浜幕張行 0751着
-			# {'arrival_time':datetime(2020, 7, 1, 8, 6), 'nop':300},  # 武蔵野線 海浜幕張行 0806着
-			# {'arrival_time':datetime(2020, 7, 1, 7, 53), 'nop':300}, # 京葉線 蘇我行 0753着
+			{'arrival_time':datetime(2020, 7, 1, 7, 51), 'nop':300}, # 武蔵野線 海浜幕張行 0751着
+			{'arrival_time':datetime(2020, 7, 1, 8, 6), 'nop':300},  # 武蔵野線 海浜幕張行 0806着
+			{'arrival_time':datetime(2020, 7, 1, 7, 53), 'nop':300}, # 京葉線 蘇我行 0753着
 			{'arrival_time':datetime(2020, 7, 1, 8, 1), 'nop':300},  # 京葉線 蘇我行 0801着
-			# {'arrival_time':datetime(2020, 7, 1, 8, 9), 'nop':300},  # 京葉線 蘇我行 0809着
-			# {'arrival_time':datetime(2020, 7, 1, 8, 12), 'nop':300},  # 京葉線 蘇我行 0812着
+			{'arrival_time':datetime(2020, 7, 1, 8, 9), 'nop':300},  # 京葉線 蘇我行 0809着
+			{'arrival_time':datetime(2020, 7, 1, 8, 12), 'nop':300},  # 京葉線 蘇我行 0812着
 		]
 	},
-	# {
-	# 	'station':'京成幕張',
-	# 	'trains':[
-	# 		{'arrival_time':datetime(2020, 7, 1, 7, 50), 'nop':300}, # 京成千葉線 ちはら台行 0750着
-	# 		{'arrival_time':datetime(2020, 7, 1, 8, 6), 'nop':300}, # 京成千葉線 ちはら台行 0806着
-	# 		{'arrival_time':datetime(2020, 7, 1, 8, 1), 'nop':300}, # 京成千葉線 ちはら台行 0806着
-	# 		{'arrival_time':datetime(2020, 7, 1, 7, 50), 'nop':300}, # 京成千葉線 京成津田沼行 0750着
-	# 		{'arrival_time':datetime(2020, 7, 1, 8, 1), 'nop':300}, # 京成千葉線/千原線 京成津田沼行 0801着
-	# 	]
-	# },
-	# {
-	# 	'station':'幕張',
-	# 	'trains':[
-	# 		{'arrival_time':datetime(2020, 7, 1, 7, 51), 'nop':300}, # 総武線 千葉行 0751着
-	# 		{'arrival_time':datetime(2020, 7, 1, 8, 0), 'nop':300}, # 総武線 千葉行 0800着
-	# 		{'arrival_time':datetime(2020, 7, 1, 8, 6), 'nop':300}, # 総武線 千葉行 0806着
-	# 		{'arrival_time':datetime(2020, 7, 1, 7, 51), 'nop':300}, # 総武線 中野行 0751着
-	# 		{'arrival_time':datetime(2020, 7, 1, 7, 55), 'nop':300}, # 総武線 中野行 0755着
-	# 		{'arrival_time':datetime(2020, 7, 1, 7, 58), 'nop':300}, # 総武線 中野行 0758着
-	# 		{'arrival_time':datetime(2020, 7, 1, 8, 4), 'nop':300}, # 総武線 中野行 0804着
-	# 	]
-	# }
+	{
+		'station':'京成幕張',
+		'trains':[
+			{'arrival_time':datetime(2020, 7, 1, 7, 50), 'nop':300}, # 京成千葉線 ちはら台行 0750着
+			{'arrival_time':datetime(2020, 7, 1, 8, 6), 'nop':300}, # 京成千葉線 ちはら台行 0806着
+			{'arrival_time':datetime(2020, 7, 1, 8, 1), 'nop':300}, # 京成千葉線 ちはら台行 0806着
+			{'arrival_time':datetime(2020, 7, 1, 7, 50), 'nop':300}, # 京成千葉線 京成津田沼行 0750着
+			{'arrival_time':datetime(2020, 7, 1, 8, 1), 'nop':300}, # 京成千葉線/千原線 京成津田沼行 0801着
+		]
+	},
+	{
+		'station':'幕張',
+		'trains':[
+			{'arrival_time':datetime(2020, 7, 1, 7, 51), 'nop':300}, # 総武線 千葉行 0751着
+			{'arrival_time':datetime(2020, 7, 1, 8, 0), 'nop':300}, # 総武線 千葉行 0800着
+			{'arrival_time':datetime(2020, 7, 1, 8, 6), 'nop':300}, # 総武線 千葉行 0806着
+			{'arrival_time':datetime(2020, 7, 1, 7, 51), 'nop':300}, # 総武線 中野行 0751着
+			{'arrival_time':datetime(2020, 7, 1, 7, 55), 'nop':300}, # 総武線 中野行 0755着
+			{'arrival_time':datetime(2020, 7, 1, 7, 58), 'nop':300}, # 総武線 中野行 0758着
+			{'arrival_time':datetime(2020, 7, 1, 8, 4), 'nop':300}, # 総武線 中野行 0804着
+		]
+	}
 ]
 
 
@@ -233,15 +233,15 @@ ax3.set_title('Number of People Passing Through Thermography per Second')
 ax3.set_xlabel('t[sec]')
 ax3.set_ylabel('number')
 
-x = [x.arrival_time_gate for x in passed_people]
-y = [x.calc_wait_time for x in passed_people]
+x = [x.arrival_time_gate for x in passed_people_list]
+y = [x.calc_wait_time() for x in passed_people_list]
 
 fig = plt.figure(4)
 ax4 = fig.add_subplot()
 ax4.scatter(x,y)
 
-x = [x.arrival_time_gate for x in passed_people]
-y = [x.arrival_time_doorway for x in passed_people]
+x = [x.arrival_time_gate for x in passed_people_list]
+y = [x.arrival_time_doorway for x in passed_people_list]
 
 fig = plt.figure(5)
 ax5 = fig.add_subplot()
