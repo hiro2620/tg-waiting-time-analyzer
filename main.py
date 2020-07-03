@@ -209,12 +209,12 @@ for t in range(0, MAX_TIME_STEP+1):
 		# print(p)
 		passed_people_list.append(p)
 
+
+# draw graphs
 TICKS_MAJOR = [x for x in range(0, MAX_TIME_STEP + 1, 600)]
 TICKS_MINOR = [x for x in range(0, MAX_TIME_STEP + 1, 60)]
-
 FIG_SIZE = (10.0, 6.0)
 
-# draw graph
 fig = plt.figure(1, figsize=FIG_SIZE)
 ax1 = fig.add_subplot()
 ax1.plot(history_gate, linewidth=1)
