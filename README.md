@@ -16,3 +16,8 @@ pip install -r requirements.txt
 ```bash
 python3 main.py
 ```
+
+## Environment
+Tested on:
+- Windows 10 / Python 3.7.8 64bit
+- Ubuntu 20.04 / Python 3.8.3 x86_64
