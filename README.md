@@ -4,7 +4,7 @@
 
 ### 1. Clone repo
 ```bash
-git https://github.com/hiro2620/tg-waiting-time-analyzer.git
+git clone https://github.com/hiro2620/tg-waiting-time-analyzer.git
 cd tg-waiting-time-analyzer
 ```
 ### 2. Activate virtual environment (if you need)
