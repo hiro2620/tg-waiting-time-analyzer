@@ -1,4 +1,4 @@
-﻿# tg-wating-time-analyzer
+﻿# tg-waiting-time-analyzer
 
 ## Usage
 
